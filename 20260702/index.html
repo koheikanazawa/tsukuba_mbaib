@@ -104,7 +104,6 @@
       flex: 0 0 auto;
     }
 
-    .nav a,
     .lang-toggle button {
       min-height: 38px;
       border: 1px solid var(--line);
@@ -115,12 +114,6 @@
       font-size: 14px;
       font-weight: 700;
       cursor: pointer;
-    }
-
-    .nav a {
-      display: inline-flex;
-      align-items: center;
-      padding: 7px 12px;
     }
 
     .lang-toggle {
@@ -413,6 +406,425 @@
       font-weight: 800;
     }
 
+    /* Section 2: editable research framework */
+    .research-slide {
+      --slide-navy: #10233f;
+      --slide-blue: #1f6feb;
+      --slide-blue-soft: #eaf2ff;
+      --slide-gray: #eef2f6;
+      --slide-gray-strong: #cfd8e3;
+      --slide-muted: #728096;
+      padding: 26px;
+      border: 1px solid var(--slide-gray-strong);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--slide-navy);
+      box-shadow: none;
+    }
+
+    .slide-title-row {
+      margin-bottom: 22px;
+      padding-bottom: 18px;
+      border-bottom: 2px solid var(--slide-gray);
+    }
+
+    .slide-title-row h3 {
+      color: var(--slide-navy);
+      font-size: 22px;
+    }
+
+    .research-question-text {
+      margin: 12px 0 0;
+      max-width: 980px;
+      color: #223755;
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .revision-note {
+      margin: 8px 0 0;
+      color: var(--slide-muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .framework-row {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(138px, 1fr));
+      gap: 10px;
+      align-items: start;
+    }
+
+    .stage-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 22px;
+      gap: 8px;
+      align-items: start;
+      min-width: 0;
+    }
+
+    .stage-wrap:last-child {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .stage-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      padding: 14px;
+      border: 1px solid var(--slide-gray-strong);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .stage-head {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .stage-icon {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--slide-navy);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .stage-title {
+      margin: 0;
+      color: var(--slide-navy);
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.28;
+    }
+
+    .stage-body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .option {
+      padding: 7px 8px;
+      border: 1px solid var(--slide-gray-strong);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+
+    .option.focus {
+      border-color: var(--slide-blue);
+      background: var(--slide-blue-soft);
+      color: var(--slide-blue);
+      box-shadow: inset 0 0 0 1px rgba(31, 111, 235, 0.18);
+    }
+
+    .option.muted {
+      background: var(--slide-gray);
+      color: var(--slide-muted);
+    }
+
+    .term-link {
+      position: relative;
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .term-link::after {
+      content: "↗";
+      float: right;
+      margin-left: 6px;
+      color: var(--slide-blue);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .term-tooltip {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 10px);
+      z-index: 30;
+      display: none;
+      width: min(360px, 72vw);
+      padding: 14px;
+      border: 1px solid #b9cdf2;
+      border-radius: 8px;
+      background: #fff;
+      color: #223755;
+      box-shadow: 0 14px 36px rgba(16, 35, 63, 0.18);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .term-tooltip::before {
+      content: "";
+      position: absolute;
+      top: -7px;
+      left: 18px;
+      width: 12px;
+      height: 12px;
+      border-top: 1px solid #b9cdf2;
+      border-left: 1px solid #b9cdf2;
+      background: #fff;
+      transform: rotate(45deg);
+    }
+
+    .term-link:hover .term-tooltip,
+    .term-link:focus .term-tooltip {
+      display: block;
+    }
+
+    .term-tooltip dl {
+      display: grid;
+      grid-template-columns: 72px minmax(0, 1fr);
+      gap: 6px 10px;
+      margin: 0;
+    }
+
+    .term-tooltip dt {
+      color: var(--slide-blue);
+      font-weight: 900;
+    }
+
+    .term-tooltip dd {
+      margin: 0;
+      color: #223755;
+    }
+
+    .sub-options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 5px;
+      margin: -2px 0 0;
+    }
+
+    .sub-options .option {
+      padding: 5px 6px;
+      font-size: 10px;
+    }
+
+    .process-flow {
+      gap: 3px;
+    }
+
+    .development-group {
+      display: grid;
+      gap: 5px;
+    }
+
+    .process-box {
+      padding: 6px;
+      border: 1px solid var(--slide-gray-strong);
+      border-radius: 8px;
+    }
+
+    .flow-down {
+      color: var(--slide-muted);
+      text-align: center;
+      font-size: 12px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .support-text {
+      margin: 0;
+      padding: 8px 9px;
+      border-left: 3px solid var(--slide-blue);
+      background: #f8fbff;
+      color: #264a78;
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .arrow {
+      display: grid;
+      place-items: center;
+      color: var(--slide-blue);
+      font-size: 24px;
+      font-weight: 900;
+      min-height: 40px;
+    }
+
+    .focus-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-top: 16px;
+      padding: 12px 14px;
+      border: 1px solid #b9cdf2;
+      border-radius: 8px;
+      background: #f8fbff;
+      color: var(--slide-navy);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .focus-summary-title {
+      color: var(--slide-blue);
+    }
+
+    .focus-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--slide-blue-soft);
+      color: var(--slide-blue);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .hypothesis-flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(170px, 1fr));
+      gap: 10px;
+      align-items: start;
+    }
+
+    .hypothesis-step {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 22px;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .hypothesis-step:last-child {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .hypothesis-card {
+      padding: 14px;
+      border: 1px solid var(--slide-gray-strong);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--slide-navy);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .hypothesis-note {
+      margin: 0;
+      padding: 12px 14px;
+      border: 1px solid var(--slide-gray-strong);
+      border-radius: 8px;
+      background: #fff;
+      color: #223755;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .hypothesis-note-title {
+      margin: 16px 0 6px;
+      color: var(--slide-navy);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .hypothesis-note ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .hypothesis-note li + li {
+      margin-top: 8px;
+    }
+
+    .prior-research-table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #223755;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .prior-research-table th,
+    .prior-research-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--slide-gray-strong);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .prior-research-table th {
+      background: var(--slide-gray);
+      color: var(--slide-navy);
+      font-weight: 900;
+    }
+
+    .prior-research-table td:nth-child(2) a::after {
+      content: "↗";
+      margin-left: 6px;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .prior-literature-title {
+      margin: 22px 0 10px;
+      color: var(--slide-navy);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .prior-research-link {
+      display: inline-flex;
+      margin-left: 6px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: var(--slide-blue);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      line-height: 1.3;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .site-header,
+      .hero,
+      #previous {
+        display: none;
+      }
+
+      main {
+        max-width: none;
+        padding: 0;
+      }
+
+      .section {
+        padding: 0;
+        border: 0;
+      }
+
+      .research-slide {
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+
     @media (max-width: 920px) {
       .hero,
       .diagram-section {
@@ -427,6 +839,31 @@
       .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .framework-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hypothesis-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .stage-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .hypothesis-step {
+        grid-template-columns: 1fr;
+      }
+
+      .stage-card {
+        min-height: auto;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+        min-height: 22px;
+      }
     }
 
     @media (max-width: 680px) {
@@ -438,12 +875,7 @@
       }
 
       .nav {
-        justify-content: space-between;
-      }
-
-      .nav a {
-        flex: 1 1 auto;
-        justify-content: center;
+        justify-content: flex-start;
       }
 
       .lang-toggle {
@@ -482,15 +914,7 @@
           <span class="en">Graduate Seminar Deck</span>
         </span>
       </a>
-      <nav class="nav" aria-label="ページ内ナビゲーション">
-        <a href="#previous">
-          <span class="ja">前回</span>
-          <span class="en">Previous</span>
-        </a>
-        <a href="#current">
-          <span class="ja">今回</span>
-          <span class="en">Current</span>
-        </a>
+      <nav class="nav" aria-label="言語切り替え">
         <div class="lang-toggle" aria-label="Language switcher">
           <button type="button" data-set-lang="ja" aria-pressed="true">JP</button>
           <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
@@ -556,251 +980,491 @@
       <div class="section-head">
         <div>
           <p class="eyebrow">
-            <span class="ja">Section 2</span>
-            <span class="en">Section 2</span>
+            <span class="ja">Section 2-2</span>
+            <span class="en">Section 2-2</span>
           </p>
           <h2 id="current-title">
-            <span class="ja">今回の発表内容：研究課題の整理</span>
-            <span class="en">Current Presentation: Research Question Summary</span>
+            <span class="ja">研究の整理</span>
+            <span class="en">Research Summary</span>
           </h2>
         </div>
         <p>
-          <span class="ja">AIコーディングの導入が、プロトタイピングの生産性を通じて心理的サンクコストとピボット行動にどう接続するかを検討する。</span>
-          <span class="en">The focus is how AI coding may connect prototyping productivity to psychological sunk cost and pivot behavior.</span>
+          <span class="ja">AIコーディングとサンクコスト・バイアスの関係を、研究フレームワークとして整理する。</span>
+          <span class="en">This section frames the relationship between AI coding and sunk cost bias as a research framework.</span>
         </p>
       </div>
 
-      <div class="grid">
-        <article class="topic-card">
-          <div class="topic-top">
-            <span class="number">1</span>
-            <span class="tag">
-              <span class="ja">概念</span>
-              <span class="en">Concept</span>
-            </span>
-          </div>
+      <div class="research-slide">
+        <div class="slide-title-row">
           <h3>
-            <span class="ja">AIコーディング</span>
-            <span class="en">AI Coding</span>
+            <span class="ja">研究課題</span>
+            <span class="en">Research Question</span>
           </h3>
-          <p class="main-focus">
-            <span class="ja">生成AIによるコード作成支援</span>
-            <span class="en">AI-assisted coding</span>
+          <p class="research-question-text">
+            <span class="ja">B2Bソフトウェア企業のNPDにおいて、AIコーディングはサンクコスト・バイアスにどのような影響を与えるか</span>
+            <span class="en">How AI coding affects sunk cost bias in NPD of B2B Software Companies</span>
           </p>
-          <p class="note">
-            <span class="ja">開発者がコード生成、修正、試作、実装探索に生成AIを用いる状況を想定する。</span>
-            <span class="en">Assumes developers use generative AI for code generation, revision, prototyping, and implementation exploration.</span>
+          <p class="revision-note">
+            <span class="ja">※文言は微修正予定</span>
+            <span class="en">*Wording subject to minor revision.</span>
           </p>
-        </article>
+        </div>
 
-        <article class="topic-card">
-          <div class="topic-top">
-            <span class="number">2</span>
-            <span class="tag">SDLC</span>
+        <div class="framework-row" aria-label="Research framework">
+          <div class="stage-wrap">
+            <article class="stage-card">
+              <div class="stage-head">
+                <div class="stage-icon">AI</div>
+                <h3 class="stage-title">
+                  <span class="ja">① AIコーディング</span>
+                  <span class="en">1. AI Coding</span>
+                </h3>
+              </div>
+              <div class="stage-body">
+                <p class="option focus">
+                  <span class="ja">生成AIによるコード作成支援</span>
+                  <span class="en">AI-assisted coding</span>
+                </p>
+              </div>
+            </article>
+            <div class="arrow" aria-hidden="true">→</div>
           </div>
-          <h3>
-            <span class="ja">対象範囲</span>
-            <span class="en">Focus within SDLC</span>
-          </h3>
-          <p class="main-focus">
-            <span class="ja">主対象：プロトタイピング</span>
-            <span class="en">Main focus: Prototyping</span>
-          </p>
-          <ul>
-            <li><span class="ja">比較対象：本開発</span><span class="en">Comparison: Full development</span></li>
-            <li><span class="ja">要件定義、設計、開発、テスト、保守</span><span class="en">Requirements, design, build, test, maintenance</span></li>
-          </ul>
-          <p class="discussion">
-            <span class="ja">論点：NPDとそれ以外で、そもそもここに違いはなさそう？</span>
-            <span class="en">Question: Is there a meaningful difference here between NPD and non-NPD contexts?</span>
-          </p>
-        </article>
 
-        <article class="topic-card">
-          <div class="topic-top">
-            <span class="number">3</span>
-            <span class="tag">
-              <span class="ja">影響</span>
-              <span class="en">Impact</span>
-            </span>
+          <div class="stage-wrap">
+            <article class="stage-card">
+              <div class="stage-head">
+                <div class="stage-icon">SD</div>
+                <h3 class="stage-title">
+                  <span class="ja">② SDLC上の対象</span>
+                  <span class="en">2. Focus within SDLC</span>
+                </h3>
+              </div>
+              <div class="stage-body">
+                <p class="option focus">
+                  <span class="ja">プロトタイピング</span>
+                  <span class="en">Prototyping</span>
+                </p>
+                <div class="development-group">
+                  <p class="option muted">
+                    <span class="ja">本開発</span>
+                    <span class="en">Full development</span>
+                  </p>
+                  <div class="process-box">
+                    <div class="sub-options process-flow">
+                      <p class="option muted"><span class="ja">要件定義</span><span class="en">Requirements</span></p>
+                      <span class="flow-down" aria-hidden="true">↓</span>
+                      <p class="option muted"><span class="ja">設計</span><span class="en">Design</span></p>
+                      <span class="flow-down" aria-hidden="true">↓</span>
+                      <p class="option muted"><span class="ja">開発</span><span class="en">Build</span></p>
+                      <span class="flow-down" aria-hidden="true">↓</span>
+                      <p class="option muted"><span class="ja">テスト</span><span class="en">Test</span></p>
+                      <span class="flow-down" aria-hidden="true">↓</span>
+                      <p class="option muted"><span class="ja">保守</span><span class="en">Maintenance</span></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <div class="arrow" aria-hidden="true">→</div>
           </div>
-          <h3>
-            <span class="ja">影響領域</span>
-            <span class="en">Impact Dimension</span>
-          </h3>
-          <p class="main-focus">
-            <span class="ja">注目する影響：プロトタイプ作成時間の短縮</span>
-            <span class="en">Main focus: Shorter prototype creation time</span>
-          </p>
-          <ul>
-            <li><span class="ja">コンプライアンス</span><span class="en">Compliance</span></li>
-            <li><span class="ja">品質</span><span class="en">Quality</span></li>
-            <li><span class="ja">生産性</span><span class="en">Productivity</span></li>
-          </ul>
-          <p class="discussion">
-            <span class="ja">論点：他には？</span>
-            <span class="en">Question: What else should be considered?</span>
-          </p>
-        </article>
 
-        <article class="topic-card">
-          <div class="topic-top">
-            <span class="number">4</span>
-            <span class="tag">
-              <span class="ja">主体</span>
-              <span class="en">Actor</span>
-            </span>
+          <div class="stage-wrap">
+            <article class="stage-card">
+              <div class="stage-head">
+                <div class="stage-icon">IM</div>
+                <h3 class="stage-title">
+                  <span class="ja">③ 影響領域</span>
+                  <span class="en">3. Impact dimension</span>
+                </h3>
+              </div>
+              <div class="stage-body">
+                <p class="option muted">
+                  <span class="ja">コンプライアンス</span>
+                  <span class="en">Compliance</span>
+                </p>
+                <p class="option muted">
+                  <span class="ja">品質</span>
+                  <span class="en">Quality</span>
+                </p>
+                <p class="option focus">
+                  <span class="ja">生産性</span>
+                  <span class="en">Productivity</span>
+                  <a class="prior-research-link" href="#section3-1">先行研究</a>
+                </p>
+                <p class="support-text">
+                  <span class="ja">プロトタイプ作成時間の短縮</span>
+                  <span class="en">Shorter prototype creation time</span>
+                </p>
+              </div>
+            </article>
+            <div class="arrow" aria-hidden="true">→</div>
           </div>
-          <h3>
-            <span class="ja">行動変容の対象</span>
-            <span class="en">Target of Behavior Change</span>
-          </h3>
-          <p class="main-focus">
-            <span class="ja">主対象：開発プロジェクトメンバ</span>
-            <span class="en">Main target: Project members</span>
-          </p>
-          <ul>
-            <li><span class="ja">顧客</span><span class="en">Customers</span></li>
-            <li><span class="ja">社内</span><span class="en">Internal stakeholders</span></li>
-            <li><span class="ja">上層部</span><span class="en">Leadership</span></li>
-          </ul>
-          <p class="discussion">
-            <span class="ja">論点：他には？</span>
-            <span class="en">Question: Who else may be affected?</span>
-          </p>
-        </article>
 
-        <article class="topic-card">
-          <div class="topic-top">
-            <span class="number">5</span>
-            <span class="tag">
-              <span class="ja">心理</span>
-              <span class="en">Psychology</span>
-            </span>
+          <div class="stage-wrap">
+            <article class="stage-card">
+              <div class="stage-head">
+                <div class="stage-icon">TG</div>
+                <h3 class="stage-title">
+                  <span class="ja">④ 行動変容の対象</span>
+                  <span class="en">4. Target of behavior change</span>
+                </h3>
+              </div>
+              <div class="stage-body">
+                <p class="option muted">
+                  <span class="ja">顧客</span>
+                  <span class="en">Customers</span>
+                </p>
+                <p class="option muted">
+                  <span class="ja">社内</span>
+                  <span class="en">Internal</span>
+                </p>
+                <div class="sub-options">
+                  <p class="option muted"><span class="ja">上層部</span><span class="en">Leadership</span></p>
+                  <p class="option focus"><span class="ja">開発プロジェクトメンバ</span><span class="en">Project members</span></p>
+                </div>
+              </div>
+            </article>
+            <div class="arrow" aria-hidden="true">→</div>
           </div>
-          <h3>
-            <span class="ja">あり得る心理的影響</span>
-            <span class="en">Possible Psychological Effect</span>
-          </h3>
-          <p class="main-focus">
-            <span class="ja">作ったものへの愛着、いわゆるIKEA effectの低下？</span>
-            <span class="en">Reduced attachment to what was built, or a weaker IKEA effect?</span>
-          </p>
-          <p class="note">
-            <span class="ja">作成コストが下がることで、心理的な投資感や執着が弱まる可能性を置く。</span>
-            <span class="en">Lower creation cost may weaken perceived investment and attachment.</span>
-          </p>
-          <p class="discussion">
-            <span class="ja">論点：他には？</span>
-            <span class="en">Question: What other mechanisms are plausible?</span>
-          </p>
-        </article>
 
-        <article class="topic-card">
-          <div class="topic-top">
-            <span class="number">6</span>
-            <span class="tag">
-              <span class="ja">行動</span>
-              <span class="en">Behavior</span>
-            </span>
+          <div class="stage-wrap">
+            <article class="stage-card">
+              <div class="stage-head">
+                <div class="stage-icon">PS</div>
+                <h3 class="stage-title">
+                  <span class="ja">⑤ あり得る心理的影響</span>
+                  <span class="en">5. Possible psychological effect</span>
+                </h3>
+              </div>
+              <div class="stage-body">
+                <a class="option term-link" href="https://doi.org/10.1016/j.jcps.2011.08.002" target="_blank" rel="noopener noreferrer">
+                  <span class="ja">作ったものへの執着の低下<br>IKEA Effect</span>
+                  <span class="en">Lower attachment to what was built<br>IKEA Effect</span>
+                  <span class="term-tooltip" role="tooltip">
+                    <dl>
+                      <dt><span class="ja">用語</span><span class="en">Term</span></dt>
+                      <dd>IKEA Effect</dd>
+                      <dt><span class="ja">提唱者</span><span class="en">Authors</span></dt>
+                      <dd>Norton, Mochon, and Ariely</dd>
+                      <dt><span class="ja">年号</span><span class="en">Year</span></dt>
+                      <dd>2012</dd>
+                      <dt><span class="ja">解説</span><span class="en">Note</span></dt>
+                      <dd>
+                        <span class="ja">自分たちで作ったものを、客観的な価値以上に高く評価してしまう認知バイアス。ソフトウェア開発PJでは、苦労して作った機能やプロトタイプへの愛着が、市場ニーズが低い場合でも維持・拡張の判断につながる可能性がある。</span>
+                        <span class="en">A cognitive bias in which people overvalue things they have created. In software projects, attachment to hard-built features or prototypes may encourage teams to maintain or expand them even when market need is weak.</span>
+                      </dd>
+                    </dl>
+                  </span>
+                </a>
+                <a class="option term-link" href="https://doi.org/10.1016/0749-5978(85)90049-4" target="_blank" rel="noopener noreferrer">
+                  <span class="ja">サンクコストの低下<br>Sunk Cost Bias</span>
+                  <span class="en">Lower sunk cost bias<br>Sunk Cost Bias</span>
+                  <span class="term-tooltip" role="tooltip">
+                    <dl>
+                      <dt><span class="ja">用語</span><span class="en">Term</span></dt>
+                      <dd>Sunk Cost Effect / Sunk Cost Bias</dd>
+                      <dt><span class="ja">提唱者</span><span class="en">Authors</span></dt>
+                      <dd>Arkes and Blumer</dd>
+                      <dt><span class="ja">年号</span><span class="en">Year</span></dt>
+                      <dd>1985</dd>
+                      <dt><span class="ja">解説</span><span class="en">Note</span></dt>
+                      <dd>
+                        <span class="ja">すでに回収不可能な時間・費用・労力を理由に、合理的には中止や方向転換をすべきプロジェクトを継続してしまう認知バイアス。過去の投資が撤退やピボットの意思決定を妨げる要因となる。</span>
+                        <span class="en">A cognitive bias in which unrecoverable time, cost, or effort causes continued investment in a project that should rationally be stopped or redirected.</span>
+                      </dd>
+                    </dl>
+                  </span>
+                </a>
+                <a class="option term-link" href="https://doi.org/10.2307/3250950" target="_blank" rel="noopener noreferrer">
+                  <span class="ja">エスカレーション・オブ・コミットメントの回避</span>
+                  <span class="en">Avoiding escalation of commitment</span>
+                  <span class="term-tooltip" role="tooltip">
+                    <dl>
+                      <dt><span class="ja">用語</span><span class="en">Term</span></dt>
+                      <dd>Escalation of Commitment in Software Projects</dd>
+                      <dt><span class="ja">提唱者</span><span class="en">Authors</span></dt>
+                      <dd>Keil, Mann, and Rai</dd>
+                      <dt><span class="ja">年号</span><span class="en">Year</span></dt>
+                      <dd>2000</dd>
+                      <dt><span class="ja">解説</span><span class="en">Note</span></dt>
+                      <dd>
+                        <span class="ja">失敗の兆候が明らかになった後も、既存プロジェクトへのコミットメントを強め、追加投資を続けてしまう現象。成果物への愛着と投資回収意識が組み合わさることで、問題のあるプロジェクトの継続につながる可能性がある。</span>
+                        <span class="en">A tendency to increase commitment and continue investing after signs of failure become visible. In software projects, attachment to artifacts and concern for recovering past investment can reinforce continued commitment.</span>
+                      </dd>
+                    </dl>
+                  </span>
+                </a>
+              </div>
+            </article>
+            <div class="arrow" aria-hidden="true">→</div>
           </div>
-          <h3>
-            <span class="ja">あり得る行動変容</span>
-            <span class="en">Possible Behavioral Changes</span>
-          </h3>
-          <p class="main-focus">
-            <span class="ja">路線変更、見切り、諦めが早くなる可能性</span>
-            <span class="en">Greater willingness to pivot, abandon, or redirect earlier</span>
-          </p>
-          <ul>
-            <li><span class="ja">試作数の増加</span><span class="en">More prototypes</span></li>
-            <li><span class="ja">要求への応答高速化</span><span class="en">Faster creation and revision</span></li>
-            <li><span class="ja">使い捨て試作の増加</span><span class="en">More disposable prototypes</span></li>
-          </ul>
-          <p class="discussion">
-            <span class="ja">論点：他には？</span>
-            <span class="en">Question: What other behavioral changes may arise?</span>
-          </p>
-        </article>
+
+          <div class="stage-wrap">
+            <article class="stage-card">
+              <div class="stage-head">
+                <div class="stage-icon">BC</div>
+                <h3 class="stage-title">
+                  <span class="ja">⑥ あり得る行動変容</span>
+                  <span class="en">6. Possible behavioral changes</span>
+                </h3>
+              </div>
+              <div class="stage-body">
+                <p class="option muted">
+                  <span class="ja">試作数の増加</span>
+                  <span class="en">More prototypes</span>
+                </p>
+                <p class="option muted">
+                  <span class="ja">要求への応答高速化</span>
+                  <span class="en">Faster creation &amp; revision</span>
+                </p>
+                <p class="option muted">
+                  <span class="ja">使い捨て試作の増加</span>
+                  <span class="en">More disposable prototypes</span>
+                </p>
+                <p class="option focus">
+                  <span class="ja">路線変更に積極的</span>
+                  <span class="en">Greater willingness to pivot</span>
+                </p>
+                <p class="support-text">
+                  <span class="ja">（= 見切り・諦めが早くなる可能性を含む）</span>
+                  <span class="en">May also imply quicker abandonment or redirection</span>
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="focus-summary" aria-label="本研究の焦点">
+          <span class="focus-summary-title">
+            <span class="ja">本研究の焦点</span>
+            <span class="en">Focus</span>
+          </span>
+          <span class="focus-chip"><span class="ja">プロトタイピング</span><span class="en">Prototyping</span></span>
+          <span class="focus-chip"><span class="ja">生産性</span><span class="en">Productivity</span></span>
+          <span class="focus-chip"><span class="ja">開発プロジェクトメンバ</span><span class="en">Project members</span></span>
+          <span class="focus-chip"><span class="ja">路線変更に積極的</span><span class="en">Willingness to pivot</span></span>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="hypothesis" aria-labelledby="hypothesis-title">
-      <div class="diagram-section">
-        <div class="hypothesis-copy">
+    <section class="section" id="current-hypothesis" aria-labelledby="current-hypothesis-title">
+      <div class="section-head">
+        <div>
           <p class="eyebrow">
-            <span class="ja">Hypothesis</span>
-            <span class="en">Hypothesis</span>
+            <span class="ja">Section 2-3</span>
+            <span class="en">Section 2-3</span>
           </p>
-          <h2 id="hypothesis-title">
-            <span class="ja">検証対象の仮説的な因果連鎖</span>
-            <span class="en">Tentative Causal Chain to Be Examined</span>
+          <h2 id="current-hypothesis-title">
+            <span class="ja">現在の仮説</span>
+            <span class="en">Current Hypothesis</span>
           </h2>
-          <p>
-            <span class="ja">AIコーディングがプロトタイピングの生産性を高め、心理的サンクコストを下げ、その結果としてピボットや早期撤退への抵抗を弱める、という流れを仮説として置く。</span>
-            <span class="en">The hypothesis is that AI coding improves prototyping productivity, lowers psychological sunk cost, and thereby reduces resistance to pivoting or early abandonment.</span>
-          </p>
-        </div>
-
-        <div class="flow" role="list" aria-label="Hypothetical causal chain">
-          <div class="flow-step" role="listitem">
-            <div class="flow-letter">A</div>
-            <div>
-              <p class="flow-title">
-                <span class="ja">AIコーディング</span>
-                <span class="en">AI Coding</span>
-              </p>
-              <p class="flow-sub">
-                <span class="ja">コード作成・修正・試作の支援</span>
-                <span class="en">Support for coding, revision, and prototyping</span>
-              </p>
-            </div>
-          </div>
-          <div class="flow-step" role="listitem">
-            <div class="flow-letter">B</div>
-            <div>
-              <p class="flow-title">
-                <span class="ja">プロトタイピング生産性向上</span>
-                <span class="en">Higher Prototyping Productivity</span>
-              </p>
-              <p class="flow-sub">
-                <span class="ja">作成時間と修正時間の短縮</span>
-                <span class="en">Shorter creation and revision time</span>
-              </p>
-            </div>
-          </div>
-          <div class="flow-step" role="listitem">
-            <div class="flow-letter">C</div>
-            <div>
-              <p class="flow-title">
-                <span class="ja">心理的サンクコスト低下</span>
-                <span class="en">Lower Psychological Sunk Cost</span>
-              </p>
-              <p class="flow-sub">
-                <span class="ja">作ったものへの愛着や投資感の低下</span>
-                <span class="en">Reduced attachment and perceived investment</span>
-              </p>
-            </div>
-          </div>
-          <div class="flow-step" role="listitem">
-            <div class="flow-letter">D</div>
-            <div>
-              <p class="flow-title">
-                <span class="ja">路線変更に積極化</span>
-                <span class="en">Greater Willingness to Pivot</span>
-              </p>
-              <p class="flow-sub">
-                <span class="ja">見切り・諦め・方向転換が早くなる可能性</span>
-                <span class="en">Possibly faster abandonment or redirection</span>
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 
-      <div class="summary-band">
-        <span class="ja">中間審査に向けては、心理的サンクコストの定義、観測可能な行動指標、NPD文脈である必然性を明確化する。</span>
-        <span class="en">Toward the midterm review, the key tasks are clarifying the definition of psychological sunk cost, observable behavioral indicators, and why the NPD context matters.</span>
+      <div class="research-slide">
+        <div class="hypothesis-flow" aria-label="現在の仮説">
+          <div class="hypothesis-step">
+            <div class="hypothesis-card">
+              <span class="ja">AIコーディングによるコーディング作業の自動化効率化</span>
+              <span class="en">Automation and efficiency gains in coding work through AI coding</span>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </div>
+          <div class="hypothesis-step">
+            <div class="hypothesis-card">
+              <span class="ja">プロトタイプコードの開発速度の向上</span>
+              <span class="en">Faster development of prototype code</span>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </div>
+          <div class="hypothesis-step">
+            <div class="hypothesis-card">
+              <span class="ja">サンクコストの低下</span>
+              <span class="en">Lower sunk cost</span>
+            </div>
+            <div class="arrow" aria-hidden="true">→</div>
+          </div>
+          <div class="hypothesis-step">
+            <div class="hypothesis-card">
+              <span class="ja">路線変更に積極的</span>
+              <span class="en">Greater willingness to pivot</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="hypothesis-note-title">
+          <span class="ja">備考</span>
+          <span class="en">Note</span>
+        </p>
+        <div class="hypothesis-note">
+          <ul>
+            <li>
+              <span class="ja">コーディング自体はプロトタイプ問わず高速化する一方で、仕様や品質のレビューなどプロダクトへの責任が生じにくいプロトタイプで恩恵が大きいのではないか。</span>
+              <span class="en">Coding itself becomes faster regardless of whether it is for a prototype, but the benefit may be larger for prototypes where product responsibility such as specification and quality review is less likely to arise.</span>
+            </li>
+            <li>
+              <span class="ja">路線変更に積極的というのは良い側面としてあり得るが、逆を言えば、本番開発に進む前にプロジェクトを放棄するなどコミットメントが高まらないというネガティブな効果もあるかもしれない。</span>
+              <span class="en">Greater willingness to pivot may be a positive effect, but conversely there may also be a negative effect in which commitment does not increase, such as abandoning a project before full development.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="prior-research" aria-labelledby="prior-research-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Section 3</p>
+          <h2 id="prior-research-title">先行研究</h2>
+        </div>
+      </div>
+
+      <div class="research-slide">
+        <div class="slide-title-row">
+          <h3 id="section3-1">Section 3-1</h3>
+          <p class="research-question-text">2025,2026の先行研究調査：AIがソフトウェア開発の生産性に与える影響 （工程別）</p>
+        </div>
+
+        <table class="prior-research-table">
+          <thead>
+            <tr>
+              <th>フェーズ</th>
+              <th>AIの有効性</th>
+              <th>備考</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>プロト作り</td>
+              <td>有効</td>
+              <td>現状提示されている大きな懸念なし</td>
+            </tr>
+            <tr>
+              <td>要件定義</td>
+              <td>限定的に有効</td>
+              <td>情報整理はOK。人間による正確性保証が必要</td>
+            </tr>
+            <tr>
+              <td>設計</td>
+              <td>限定的に有効</td>
+              <td>AIによるミスガイドのリスクと影響が大きい</td>
+            </tr>
+            <tr>
+              <td>開発</td>
+              <td>限定的に有効</td>
+              <td>大規模なプログラムではメンテナンス性に課題あり</td>
+            </tr>
+            <tr>
+              <td>テスト</td>
+              <td>限定的に有効</td>
+              <td>テストシナリオやテスト結果の品質チェックは人間が必要</td>
+            </tr>
+            <tr>
+              <td>保守</td>
+              <td>限定的に有効</td>
+              <td>AI生成コードの既存システムへの統合では、外部システムとの依存関係がリスク</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 class="prior-literature-title">先行文献</h3>
+        <table class="prior-research-table">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Title</th>
+              <th>Year</th>
+              <th>Authors</th>
+              <th>AIが生産性に与える影響</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001520026500007" target="_blank" rel="noopener noreferrer">AI for Productivity: Transforming Enterprise Software Development</a></td>
+              <td>2025</td>
+              <td>Amit Jain and Rohit Tiwari</td>
+              <td>AIは、プロジェクト管理、コード生成、自動テスト、DevOpsなどSDLCの複数段階で、手作業削減・効率化・品質向上に寄与すると述べている。<br>コード生成や補完では反復的作業を減らし、開発者が設計や問題解決など高次の作業に集中できるとされる。</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001593214400193" target="_blank" rel="noopener noreferrer">Challenges and Opportunities for Generative AI in Software Engineering: A Managerial View</a></td>
+              <td>2025</td>
+              <td>Sergio Rico and Lena-Maria Öberg</td>
+              <td>LLMはコード開発、デバッグ、ドキュメント、教育などで利用され、生産性や品質向上の可能性があると述べている。<br>一方で、要件・設計・テスト・保守を含むSDLC全体への適用には、IP、品質保証、統合、プライバシーなどの課題がある。</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001447433100017" target="_blank" rel="noopener noreferrer">Impact of Generative AI Technologies on Software Development Professionals’ Perceptions of Job Security</a></td>
+              <td>2024</td>
+              <td>Phelipe Silva Malheiros, Rayfran Rocha Lima, and Ana Carolina Oran</td>
+              <td>GenAIは、コーディング時間の削減やドキュメント品質の改善に役立つとされている。<br>また、コード生成、コード説明、要件抽出、テスト支援など、開発工程の複数領域に関連する技術として扱われている。</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001592466600010" target="_blank" rel="noopener noreferrer">The Impact of AI-Generated Solutions on Software Architecture and Productivity</a></td>
+              <td>2025</td>
+              <td>Rohan Ramesh Jadhav, Madhuri Chaudhari, Rajat Hedav, Madhulika Gupta, and Pooja Ghadge</td>
+              <td>AIは、要件収集、コーディング、テスト、設計、保守などSDLCの複数段階で使われているとされる。<br>特に反復的作業や初期段階の開発で生産性向上が見られる一方、アーキテクチャ品質や保守性には人間のレビューが必要だと述べている。</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001558899800018" target="_blank" rel="noopener noreferrer">Unpacking Organizational Change in AI Transformations of Software Engineering</a></td>
+              <td>2025</td>
+              <td>Theocharis Tavantzis and Robert Feldt</td>
+              <td>AI導入による生産性向上や自動化の可能性には触れているが、主眼はSDLC工程別の生産性比較ではない。<br>中心は、AI導入に伴う組織変革、人間要因、協働、リーダーシップ、抵抗管理、倫理的配慮である。</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001467340200001" target="_blank" rel="noopener noreferrer">Exploring the Potential of Generative AI: Use Cases in Software Startups</a></td>
+              <td>2025</td>
+              <td>Mario Simaremare, Triando, and Sergio Rico</td>
+              <td>GenAIは、スタートアップの製品開発において、MVP開発、要件整理、顧客フィードバック分析、テストケース生成、ドキュメント作成を支援できるとされる。<br>特に、限られたリソースの中で開発スピードや製品品質を高める用途が整理されている。</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001467340200003" target="_blank" rel="noopener noreferrer">Generative AI for Test Driven Development: Preliminary Results</a></td>
+              <td>2025</td>
+              <td>Moritz Mock, Jorge Melegati, and Barbara Russo</td>
+              <td>GenAIをTDDに組み込み、テストコードと実装コードの生成を支援できるかを検証している。<br>AIはTDDを効率化する可能性がある一方、生成結果には人間の監督が必要だと述べている。</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001467340200004" target="_blank" rel="noopener noreferrer">Responsible AI in Agile Software Engineering - An Industry Perspective</a></td>
+              <td>2025</td>
+              <td>Rasmus Ulfsnes, Nils Brede Moe, Jostein Emmerhoff, Marcin Floryan, Anastasia Griva, Jan Henrik Gundelsby, Astri Moksnes Barbala, and Kieran Conboy</td>
+              <td>AIは、要件収集、コード生成、テスト、ユーザーフィードバックなどアジャイル開発の複数活動で生産性向上に関係するとされる。<br>一方で、責任あるAI利用、セキュリティ、倫理、チーム協働、知識共有への影響が重要な課題として扱われている。</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001467340200005" target="_blank" rel="noopener noreferrer">A Journey Through SPACE: Unpacking the Perceived Productivity of GitHub Copilot</a></td>
+              <td>2025</td>
+              <td>Viggo Tellefsen Wivestad and Rasmus Ulfsnes</td>
+              <td>GitHub Copilotが開発者の認知された生産性に与える影響を、SPACEフレームワークで分析している。<br>主に、職務満足、flow、タスク完了速度、満足できる作業への集中との関係が扱われており、SDLC工程別の比較は中心ではない。</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001467340200013" target="_blank" rel="noopener noreferrer">Copilot’s Island of Joy: Balancing Individual Satisfaction with Team Interaction in Agile Development</a></td>
+              <td>2025</td>
+              <td>Viggo Tellefsen Wivestad, Astri Barbala, and Viktoria Stray</td>
+              <td>GitHub Copilotが、開発者個人の満足度や作業への集中に与える影響を扱っている。<br>一方で、同僚への依存低下やチーム相互作用への影響も示されており、個人生産性とチーム協働のバランスが論点になっている。</td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001467340200011" target="_blank" rel="noopener noreferrer">ChatGPT for Tailoring Software Documentation for Managers and Developers</a></td>
+              <td>2025</td>
+              <td>Saimir Bala, Kristina Sahling, Jennifer Haase, and Jan Mendling</td>
+              <td>ChatGPTを使って、ソフトウェアドキュメントをマネージャー向け・開発者向けに調整する研究である。<br>主に仕様・ドキュメント共有の支援に関係し、対象読者に応じた説明の変換や理解支援が扱われている。</td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001467340200014" target="_blank" rel="noopener noreferrer">Can ChatGPT Suggest Patterns? An Exploratory Study About Answers Given by AI-Assisted Tools to Design Problems</a></td>
+              <td>2025</td>
+              <td>João José Maranhão Junior, Filipe F. Correia, and Eduardo Martins Guerra</td>
+              <td>ChatGPTが設計問題に対して適切なデザインパターンを提案できるかを調べている。<br>設計段階の支援可能性は示されているが、人間の専門性を置き換えるものではないと述べている。</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
   </main>
