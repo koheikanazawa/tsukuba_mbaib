@@ -808,6 +808,36 @@
       font-weight: 900;
     }
 
+    .info-tooltip {
+      position: relative;
+      display: inline-flex;
+      margin-left: 6px;
+      cursor: help;
+    }
+
+    .info-tooltip-text {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 8px);
+      z-index: 30;
+      display: none;
+      width: min(360px, 72vw);
+      padding: 12px;
+      border: 1px solid #b9cdf2;
+      border-radius: 8px;
+      background: #fff;
+      color: #223755;
+      box-shadow: 0 14px 36px rgba(16, 35, 63, 0.18);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .info-tooltip:hover .info-tooltip-text,
+    .info-tooltip:focus .info-tooltip-text {
+      display: block;
+    }
+
     .prior-image-list {
       display: grid;
       gap: 18px;
@@ -1135,6 +1165,9 @@
                 <p class="support-text">
                   <span class="ja">プロトタイプの高度化（先行研究では見つかってないかも？）</span>
                   <span class="en">More advanced prototypes (may not have been found in prior research?)</span>
+                  <span class="info-tooltip" tabindex="0" aria-label="補足">ℹ️
+                    <span class="info-tooltip-text">PJの初期段階の限られた人員・費用でも高度なプロトタイプが作れるようになったとすると、静的や簡易なモックアップでは確認できないという理由で開発工数を割いていたケースでも、AIで対応できるようになるのではないか？だとすると、早期に事業の見込みがないと判断できるようになっているのではないか？（という思いつきコメント）</span>
+                  </span>
                 </p>
               </div>
             </article>
