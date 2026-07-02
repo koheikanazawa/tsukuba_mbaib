@@ -1,0 +1,824 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中間審査に向けた研究課題整理</title>
+  <style>
+    :root {
+      --ink: #182024;
+      --muted: #607076;
+      --line: #d9e2e4;
+      --paper: #f7f8f5;
+      --surface: #ffffff;
+      --accent: #0f766e;
+      --accent-strong: #115e59;
+      --accent-soft: #dff3ef;
+      --rose: #b42354;
+      --amber: #9a5b00;
+      --blue: #2563a6;
+      --shadow: 0 18px 50px rgba(24, 32, 36, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(223, 243, 239, 0.6), rgba(247, 248, 245, 0) 360px),
+        var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.65;
+    }
+
+    body.lang-en .ja {
+      display: none;
+    }
+
+    body.lang-ja .en {
+      display: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(217, 226, 228, 0.86);
+      background: rgba(247, 248, 245, 0.92);
+      backdrop-filter: blur(14px);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 14px 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      flex: 0 0 auto;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--accent-strong);
+      font-size: 14px;
+    }
+
+    .brand-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+
+    .nav a,
+    .lang-toggle button {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+    }
+
+    .lang-toggle {
+      display: flex;
+      gap: 4px;
+      padding: 3px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #eef3f2;
+    }
+
+    .lang-toggle button {
+      min-width: 52px;
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+    }
+
+    body.lang-ja [data-set-lang="ja"],
+    body.lang-en [data-set-lang="en"] {
+      color: #fff;
+      background: var(--accent-strong);
+      box-shadow: 0 4px 14px rgba(17, 94, 89, 0.24);
+    }
+
+    main {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 48px 24px 72px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      gap: 36px;
+      align-items: end;
+      min-height: 420px;
+      padding: 38px 0 54px;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--accent-strong);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 880px;
+      font-size: clamp(36px, 6vw, 70px);
+    }
+
+    h2 {
+      font-size: clamp(26px, 4vw, 42px);
+    }
+
+    h3 {
+      font-size: 21px;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .hero-panel {
+      display: grid;
+      gap: 14px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .question {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.34;
+    }
+
+    .note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 54px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 28px;
+    }
+
+    .section-head p {
+      max-width: 560px;
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .placeholder {
+      min-height: 180px;
+      padding: 28px;
+      border: 1px dashed #aebcbf;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.62);
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .topic-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 288px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: 0 8px 24px rgba(24, 32, 36, 0.06);
+    }
+
+    .topic-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .number {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--ink);
+      font-weight: 800;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .topic-card p {
+      margin: 0;
+    }
+
+    .topic-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .main-focus {
+      padding: 13px 14px;
+      border-left: 4px solid var(--accent);
+      background: #eff9f6;
+      font-weight: 800;
+    }
+
+    .discussion {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--amber);
+      font-weight: 800;
+    }
+
+    .diagram-section {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hypothesis-copy {
+      padding-right: 10px;
+    }
+
+    .hypothesis-copy p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 12px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .flow-step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+      min-height: 78px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      bottom: -13px;
+      left: 39px;
+      width: 2px;
+      height: 13px;
+      background: var(--accent);
+    }
+
+    .flow-letter {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--accent-strong);
+      font-weight: 900;
+    }
+
+    .flow-title {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.28;
+    }
+
+    .flow-sub {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .summary-band {
+      margin-top: 34px;
+      padding: 22px;
+      border-left: 5px solid var(--rose);
+      background: #fff5f7;
+      font-weight: 800;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .diagram-section {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 0;
+        padding-top: 28px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .header-inner {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 16px;
+      }
+
+      .nav {
+        justify-content: space-between;
+      }
+
+      .nav a {
+        flex: 1 1 auto;
+        justify-content: center;
+      }
+
+      .lang-toggle {
+        flex: 0 0 auto;
+      }
+
+      main {
+        padding: 28px 16px 56px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topic-card {
+        min-height: auto;
+      }
+
+      .question {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body class="lang-ja">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="先頭へ">
+        <span class="brand-mark">BP2</span>
+        <span class="brand-text">
+          <span class="ja">大学院ゼミ発表資料</span>
+          <span class="en">Graduate Seminar Deck</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="ページ内ナビゲーション">
+        <a href="#previous">
+          <span class="ja">前回</span>
+          <span class="en">Previous</span>
+        </a>
+        <a href="#current">
+          <span class="ja">今回</span>
+          <span class="en">Current</span>
+        </a>
+        <div class="lang-toggle" aria-label="Language switcher">
+          <button type="button" data-set-lang="ja" aria-pressed="true">JP</button>
+          <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">
+          <span class="ja">予備審査後 / 中間審査に向けた整理</span>
+          <span class="en">After Preliminary Review / Toward Midterm Review</span>
+        </p>
+        <h1 id="page-title">
+          <span class="ja">AIコーディングがB2Bソフトウェア企業のNPDにおけるサンクコスト・バイアスへ与える影響</span>
+          <span class="en">How AI Coding Affects Sunk Cost Bias in NPD of B2B Software Companies</span>
+        </h1>
+        <p class="hero-copy">
+          <span class="ja">研究課題を、対象範囲、影響領域、行動変容、心理的メカニズム、仮説的因果連鎖の順に整理する。</span>
+          <span class="en">This deck organizes the research question by scope, impact dimension, behavioral change, psychological mechanism, and a tentative causal chain.</span>
+        </p>
+      </div>
+
+      <aside class="hero-panel" aria-label="Research question">
+        <div class="panel-label">Research Question</div>
+        <p class="question">
+          <span class="ja">B2Bソフトウェア企業のNPDにおいて、AIコーディングはサンクコスト・バイアスにどのような影響を与えるか</span>
+          <span class="en">How does AI coding affect sunk cost bias in NPD of B2B software companies?</span>
+        </p>
+        <p class="note">
+          <span class="ja">文言は微修正予定。</span>
+          <span class="en">Wording subject to minor revision.</span>
+        </p>
+      </aside>
+    </section>
+
+    <section class="section" id="previous" aria-labelledby="previous-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">
+            <span class="ja">Section 1</span>
+            <span class="en">Section 1</span>
+          </p>
+          <h2 id="previous-title">
+            <span class="ja">前回の発表内容</span>
+            <span class="en">Previous Presentation</span>
+          </h2>
+        </div>
+        <p>
+          <span class="ja">ここには前回発表内容を後から追加する。</span>
+          <span class="en">Previous presentation content will be added here later.</span>
+        </p>
+      </div>
+      <div class="placeholder">
+        <span class="ja">前回発表内容：未入力</span>
+        <span class="en">Previous content: not yet entered</span>
+      </div>
+    </section>
+
+    <section class="section" id="current" aria-labelledby="current-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">
+            <span class="ja">Section 2</span>
+            <span class="en">Section 2</span>
+          </p>
+          <h2 id="current-title">
+            <span class="ja">今回の発表内容：研究課題の整理</span>
+            <span class="en">Current Presentation: Research Question Summary</span>
+          </h2>
+        </div>
+        <p>
+          <span class="ja">AIコーディングの導入が、プロトタイピングの生産性を通じて心理的サンクコストとピボット行動にどう接続するかを検討する。</span>
+          <span class="en">The focus is how AI coding may connect prototyping productivity to psychological sunk cost and pivot behavior.</span>
+        </p>
+      </div>
+
+      <div class="grid">
+        <article class="topic-card">
+          <div class="topic-top">
+            <span class="number">1</span>
+            <span class="tag">
+              <span class="ja">概念</span>
+              <span class="en">Concept</span>
+            </span>
+          </div>
+          <h3>
+            <span class="ja">AIコーディング</span>
+            <span class="en">AI Coding</span>
+          </h3>
+          <p class="main-focus">
+            <span class="ja">生成AIによるコード作成支援</span>
+            <span class="en">AI-assisted coding</span>
+          </p>
+          <p class="note">
+            <span class="ja">開発者がコード生成、修正、試作、実装探索に生成AIを用いる状況を想定する。</span>
+            <span class="en">Assumes developers use generative AI for code generation, revision, prototyping, and implementation exploration.</span>
+          </p>
+        </article>
+
+        <article class="topic-card">
+          <div class="topic-top">
+            <span class="number">2</span>
+            <span class="tag">SDLC</span>
+          </div>
+          <h3>
+            <span class="ja">対象範囲</span>
+            <span class="en">Focus within SDLC</span>
+          </h3>
+          <p class="main-focus">
+            <span class="ja">主対象：プロトタイピング</span>
+            <span class="en">Main focus: Prototyping</span>
+          </p>
+          <ul>
+            <li><span class="ja">比較対象：本開発</span><span class="en">Comparison: Full development</span></li>
+            <li><span class="ja">要件定義、設計、開発、テスト、保守</span><span class="en">Requirements, design, build, test, maintenance</span></li>
+          </ul>
+          <p class="discussion">
+            <span class="ja">論点：NPDとそれ以外で、そもそもここに違いはなさそう？</span>
+            <span class="en">Question: Is there a meaningful difference here between NPD and non-NPD contexts?</span>
+          </p>
+        </article>
+
+        <article class="topic-card">
+          <div class="topic-top">
+            <span class="number">3</span>
+            <span class="tag">
+              <span class="ja">影響</span>
+              <span class="en">Impact</span>
+            </span>
+          </div>
+          <h3>
+            <span class="ja">影響領域</span>
+            <span class="en">Impact Dimension</span>
+          </h3>
+          <p class="main-focus">
+            <span class="ja">注目する影響：プロトタイプ作成時間の短縮</span>
+            <span class="en">Main focus: Shorter prototype creation time</span>
+          </p>
+          <ul>
+            <li><span class="ja">コンプライアンス</span><span class="en">Compliance</span></li>
+            <li><span class="ja">品質</span><span class="en">Quality</span></li>
+            <li><span class="ja">生産性</span><span class="en">Productivity</span></li>
+          </ul>
+          <p class="discussion">
+            <span class="ja">論点：他には？</span>
+            <span class="en">Question: What else should be considered?</span>
+          </p>
+        </article>
+
+        <article class="topic-card">
+          <div class="topic-top">
+            <span class="number">4</span>
+            <span class="tag">
+              <span class="ja">主体</span>
+              <span class="en">Actor</span>
+            </span>
+          </div>
+          <h3>
+            <span class="ja">行動変容の対象</span>
+            <span class="en">Target of Behavior Change</span>
+          </h3>
+          <p class="main-focus">
+            <span class="ja">主対象：開発プロジェクトメンバ</span>
+            <span class="en">Main target: Project members</span>
+          </p>
+          <ul>
+            <li><span class="ja">顧客</span><span class="en">Customers</span></li>
+            <li><span class="ja">社内</span><span class="en">Internal stakeholders</span></li>
+            <li><span class="ja">上層部</span><span class="en">Leadership</span></li>
+          </ul>
+          <p class="discussion">
+            <span class="ja">論点：他には？</span>
+            <span class="en">Question: Who else may be affected?</span>
+          </p>
+        </article>
+
+        <article class="topic-card">
+          <div class="topic-top">
+            <span class="number">5</span>
+            <span class="tag">
+              <span class="ja">心理</span>
+              <span class="en">Psychology</span>
+            </span>
+          </div>
+          <h3>
+            <span class="ja">あり得る心理的影響</span>
+            <span class="en">Possible Psychological Effect</span>
+          </h3>
+          <p class="main-focus">
+            <span class="ja">作ったものへの愛着、いわゆるIKEA effectの低下？</span>
+            <span class="en">Reduced attachment to what was built, or a weaker IKEA effect?</span>
+          </p>
+          <p class="note">
+            <span class="ja">作成コストが下がることで、心理的な投資感や執着が弱まる可能性を置く。</span>
+            <span class="en">Lower creation cost may weaken perceived investment and attachment.</span>
+          </p>
+          <p class="discussion">
+            <span class="ja">論点：他には？</span>
+            <span class="en">Question: What other mechanisms are plausible?</span>
+          </p>
+        </article>
+
+        <article class="topic-card">
+          <div class="topic-top">
+            <span class="number">6</span>
+            <span class="tag">
+              <span class="ja">行動</span>
+              <span class="en">Behavior</span>
+            </span>
+          </div>
+          <h3>
+            <span class="ja">あり得る行動変容</span>
+            <span class="en">Possible Behavioral Changes</span>
+          </h3>
+          <p class="main-focus">
+            <span class="ja">路線変更、見切り、諦めが早くなる可能性</span>
+            <span class="en">Greater willingness to pivot, abandon, or redirect earlier</span>
+          </p>
+          <ul>
+            <li><span class="ja">試作数の増加</span><span class="en">More prototypes</span></li>
+            <li><span class="ja">要求への応答高速化</span><span class="en">Faster creation and revision</span></li>
+            <li><span class="ja">使い捨て試作の増加</span><span class="en">More disposable prototypes</span></li>
+          </ul>
+          <p class="discussion">
+            <span class="ja">論点：他には？</span>
+            <span class="en">Question: What other behavioral changes may arise?</span>
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="hypothesis" aria-labelledby="hypothesis-title">
+      <div class="diagram-section">
+        <div class="hypothesis-copy">
+          <p class="eyebrow">
+            <span class="ja">Hypothesis</span>
+            <span class="en">Hypothesis</span>
+          </p>
+          <h2 id="hypothesis-title">
+            <span class="ja">検証対象の仮説的な因果連鎖</span>
+            <span class="en">Tentative Causal Chain to Be Examined</span>
+          </h2>
+          <p>
+            <span class="ja">AIコーディングがプロトタイピングの生産性を高め、心理的サンクコストを下げ、その結果としてピボットや早期撤退への抵抗を弱める、という流れを仮説として置く。</span>
+            <span class="en">The hypothesis is that AI coding improves prototyping productivity, lowers psychological sunk cost, and thereby reduces resistance to pivoting or early abandonment.</span>
+          </p>
+        </div>
+
+        <div class="flow" role="list" aria-label="Hypothetical causal chain">
+          <div class="flow-step" role="listitem">
+            <div class="flow-letter">A</div>
+            <div>
+              <p class="flow-title">
+                <span class="ja">AIコーディング</span>
+                <span class="en">AI Coding</span>
+              </p>
+              <p class="flow-sub">
+                <span class="ja">コード作成・修正・試作の支援</span>
+                <span class="en">Support for coding, revision, and prototyping</span>
+              </p>
+            </div>
+          </div>
+          <div class="flow-step" role="listitem">
+            <div class="flow-letter">B</div>
+            <div>
+              <p class="flow-title">
+                <span class="ja">プロトタイピング生産性向上</span>
+                <span class="en">Higher Prototyping Productivity</span>
+              </p>
+              <p class="flow-sub">
+                <span class="ja">作成時間と修正時間の短縮</span>
+                <span class="en">Shorter creation and revision time</span>
+              </p>
+            </div>
+          </div>
+          <div class="flow-step" role="listitem">
+            <div class="flow-letter">C</div>
+            <div>
+              <p class="flow-title">
+                <span class="ja">心理的サンクコスト低下</span>
+                <span class="en">Lower Psychological Sunk Cost</span>
+              </p>
+              <p class="flow-sub">
+                <span class="ja">作ったものへの愛着や投資感の低下</span>
+                <span class="en">Reduced attachment and perceived investment</span>
+              </p>
+            </div>
+          </div>
+          <div class="flow-step" role="listitem">
+            <div class="flow-letter">D</div>
+            <div>
+              <p class="flow-title">
+                <span class="ja">路線変更に積極化</span>
+                <span class="en">Greater Willingness to Pivot</span>
+              </p>
+              <p class="flow-sub">
+                <span class="ja">見切り・諦め・方向転換が早くなる可能性</span>
+                <span class="en">Possibly faster abandonment or redirection</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="summary-band">
+        <span class="ja">中間審査に向けては、心理的サンクコストの定義、観測可能な行動指標、NPD文脈である必然性を明確化する。</span>
+        <span class="en">Toward the midterm review, the key tasks are clarifying the definition of psychological sunk cost, observable behavioral indicators, and why the NPD context matters.</span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll("[data-set-lang]");
+    const setLanguage = (lang) => {
+      document.body.classList.toggle("lang-ja", lang === "ja");
+      document.body.classList.toggle("lang-en", lang === "en");
+      document.documentElement.lang = lang;
+      buttons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.setLang === lang));
+      });
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => setLanguage(button.dataset.setLang));
+    });
+  </script>
+</body>
+</html>
